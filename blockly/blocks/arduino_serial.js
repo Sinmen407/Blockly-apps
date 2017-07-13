@@ -111,6 +111,20 @@ goog.require('Blockly.Blocks');
   }
 };
 
+ Blockly.Blocks['LM35_temporature_sensor'] = {
+  //helpUrl: 'http://www.seeedstudio.com/wiki/Project_Seven_-_Temperature',
+  init: function() {
+    this.setColour(20);
+    this.appendDummyInput()
+        .appendField("LM35 Sensor PIN#")
+        //.appendField(new Blockly.FieldImage("../../blocks/grove/400px-Temperature1.jpg", 64, 64))
+        //.appendField("PIN#")
+        .appendField(new Blockly.FieldDropdown(profile.default.analog), "PIN")
+    this.setOutput(true, 'Number');
+    this.setTooltip('return number of ambient temperature in ℃');
+  }
+};
+
 //  Blockly.Blocks['soft_init'] = {
 //   init: function() {
 //     this.setColour(Blockly.Blocks.arduino_softserial.HUE);

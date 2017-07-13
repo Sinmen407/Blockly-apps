@@ -48,6 +48,16 @@ Blockly.Arduino['serial_write'] = function() {
   return code;
 };
 
+Blockly.Arduino['LM35_temporature_sensor'] = function() {
+  var dropdown_pin = this.getFieldValue('PIN');
+  //var code = 'analogRead('+dropdown_pin+')*0.0048828125*100';
+    var code = '(125*analogRead('+dropdown_pin+'))>>8'
+   //var code = 'round( 1/(log((float)(1023-analogRead('+dropdown_pin.substring(1,2)+'))*10000/analogRead('+dropdown_pin.substring(1,2)+')/10000)/3975+1/298.15)-273.15'+')';
+
+  //var code = 'round('+'1/(log((float)(1023-analogRead('+dropdown_pin+'))*10000/analogRead('+dropdown_pin+')/10000)/3975+1/298.15)-273.15'+')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 
 // Blockly.Arduino['soft_init'] = function(block) {
 //   var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
