@@ -117,7 +117,7 @@ goog.require('Blockly.Blocks');
     this.setColour(20);
     this.appendDummyInput()
         .appendField("LM35 Sensor PIN#")
-        //.appendField(new Blockly.FieldImage("../../blocks/grove/400px-Temperature1.jpg", 64, 64))
+        .appendField(new Blockly.FieldImage("../../blocks/grove/LM35.png", 64, 64))
         //.appendField("PIN#")
         .appendField(new Blockly.FieldDropdown(profile.default.analog), "PIN")
     this.setOutput(true, 'Number');

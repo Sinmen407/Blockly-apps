@@ -56,6 +56,14 @@ Blockly.Arduino.inout_digital_write = function() {
   return code;
 };
 
+Blockly.Arduino['pinmode'] = function() {
+  var dropdown_pin = this.getFieldValue('PIN');
+  var dropdown_set = this.getFieldValue('Set');
+  Blockly.Arduino.setups_['setup_output_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', '+dropdown_set+');';
+  var code = ''
+  return code;
+};
+
 Blockly.Arduino.inout_digital_read = function() {
   var dropdown_pin = this.getFieldValue('PIN');
   Blockly.Arduino.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';

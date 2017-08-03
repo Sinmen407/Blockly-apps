@@ -298,6 +298,7 @@ this.setTooltip('output two analog values(200~800) representing two directions')
   }
 };
 
+/*
 Blockly.Blocks['grove_rgb_led'] = {
   helpUrl: 'http://www.seeedstudio.com/wiki/index.php?title=Twig_-_Chainable_RGB_LED',
   init: function() {
@@ -371,13 +372,13 @@ Blockly.Blocks['grove_rgb_led'] = {
         this.removeInput('COLOR' + x);
       }
     }
-    /*var top;
+    /!*var top;
     if(this.itemCount_ > 0){
       top = this.itemCount_-1;
     } else {
       top = 0;
     }
-    console.log("top:"+top);*/
+    console.log("top:"+top);*!/
     this.itemCount_ = 0;
     // Rebuild the block's inputs.
     var itemBlock = containerBlock.getInputTargetBlock('STACK');
@@ -387,9 +388,9 @@ Blockly.Blocks['grove_rgb_led'] = {
           colour_rgb = "00ff00";
       }
       //console.log("blk:"+this.itemCount_);
-      /*if(top>this.itemCount_){
+      /!*if(top>this.itemCount_){
         this.removeInput('COLOR' + this.itemCount_);
-      }*/
+      }*!/
       var input = this.appendDummyInput('COLOR' + this.itemCount_);
       //if (this.itemCount_ == 0) {
         input.setAlign(Blockly.ALIGN_RIGHT)
@@ -411,7 +412,7 @@ Blockly.Blocks['grove_rgb_led'] = {
           .appendField(new Blockly.FieldColour("#00ff00"), "RGB0");
     }
   }
-  /*saveConnections: function(containerBlock) {
+  /!*saveConnections: function(containerBlock) {
     // Store a pointer to any connected child blocks.
     var itemBlock = containerBlock.getInputTargetBlock('STACK');
     var x = 0;
@@ -422,7 +423,42 @@ Blockly.Blocks['grove_rgb_led'] = {
       itemBlock = itemBlock.nextConnection &&
           itemBlock.nextConnection.targetBlock();
     }
-  }*/
+  }*!/
+};
+*/
+
+Blockly.Blocks['grove_rgb_led'] = {
+  init: function() {
+    //this.setHelpUrl(Blockly.Msg.GROVE_INOUT_RGBLED_HELPURL);
+    //this.setColour(Blockly.Blocks.grove.HUE);
+      this.setColour(190);
+    this.appendDummyInput()
+        .appendField("RGB LED");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField(new Blockly.FieldImage("../../blocks/grove/RGBled.png", 64, 64));
+    this.appendValueInput("C1")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Red PIN#")
+        .appendField(new Blockly.FieldTextInput(''), 'PIN1')
+        .appendField("Value[0~255]");
+    this.appendValueInput("C2")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Green PIN#")
+        .appendField(new Blockly.FieldTextInput(''), 'PIN2')
+        .appendField("Value[0~255]");
+    this.appendValueInput("C3")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Blue PIN#")
+        .appendField(new Blockly.FieldTextInput(''), 'PIN3')
+        .appendField("Value[0~255]");
+    this.setPreviousStatement(true, "null");
+    this.setNextStatement(true, "null");
+    this.setTooltip('');
+  }
 };
 
 Blockly.Blocks['grove_rgb_led_container'] = {

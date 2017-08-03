@@ -372,7 +372,7 @@ function hexToG(h) {return parseInt((cutHex(h)).substring(2,4),16)}
 function hexToB(h) {return parseInt((cutHex(h)).substring(4,6),16)}
 function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
 
-Blockly.Arduino.grove_rgb_led = function() {
+/*Blockly.Arduino.grove_rgb_led = function() {
   var dropdown_pin = this.getFieldValue('PIN');
   var NextPIN = _get_next_pin(dropdown_pin);
 
@@ -456,6 +456,20 @@ Blockly.Arduino.grove_rgb_led = function() {
     }
   }
   code += "Send32Zero_"+dropdown_pin+"();  // send to update data\n";
+  return code;
+};*/
+
+Blockly.Arduino.grove_rgb_led = function() {
+  var dropdown_pin_C1 = this.getFieldValue('PIN1');
+  var dropdown_pin_C2 = this.getFieldValue('PIN2');
+  var dropdown_pin_C3 = this.getFieldValue('PIN3');
+  var dropdown_stat_C1 = Blockly.Arduino.valueToCode(this, 'C1', Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_stat_C2 = Blockly.Arduino.valueToCode(this, 'C2', Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_stat_C3 = Blockly.Arduino.valueToCode(this, 'C3', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.setups_['setup_red_led_'+dropdown_pin_C1] = 'pinMode('+dropdown_pin_C1+', OUTPUT);';
+  Blockly.Arduino.setups_['setup_green_led_'+dropdown_pin_C2] = 'pinMode('+dropdown_pin_C2+', OUTPUT);';
+  Blockly.Arduino.setups_['setup_blue_led_'+dropdown_pin_C3] = 'pinMode('+dropdown_pin_C3+', OUTPUT);';
+  var code = 'analogWrite('+dropdown_pin_C1+',255-'+dropdown_stat_C1+');\nanalogWrite('+dropdown_pin_C2+',255-'+dropdown_stat_C2+');\nanalogWrite('+dropdown_pin_C3+',255-'+dropdown_stat_C3+');\n';
   return code;
 };
 

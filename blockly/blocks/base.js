@@ -91,6 +91,22 @@ Blockly.Blocks['inout_digital_write'] = {
   }
 };
 
+Blockly.Blocks['pinmode'] = {
+ // helpUrl: 'http://arduino.cc/en/Reference/DigitalWrite',
+  init: function() {
+    this.setColour(230);
+    this.appendDummyInput()
+	      .appendField("Mode PIN#")
+	      .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+      	.appendField("Set")
+      	.appendField(new Blockly.FieldDropdown([["OUTPUT", "OUTPUT"], ["INTPUT", "INTPUT"]]), "Set");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('Write digital value to a specific Port');
+  }
+};
+
+
 Blockly.Blocks['inout_digital_read'] = {
   helpUrl: 'http://arduino.cc/en/Reference/DigitalRead',
   init: function() {
